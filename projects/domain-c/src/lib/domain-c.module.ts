@@ -10,7 +10,7 @@ import { DOMAIN_C_ROUTES } from './domain-c.routes';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(DOMAIN_C_ROUTES, { initialNavigation: true, useHash: true })
+    RouterModule.forRoot(DOMAIN_C_ROUTES, { initialNavigation: true, useHash: false })
     // TODO: Check for forChild
   ],
   declarations: [

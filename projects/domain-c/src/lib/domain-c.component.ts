@@ -47,7 +47,7 @@ export class DomainCComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.router.navigateByUrl(location.hash.substr(1));
-    window.addEventListener('hashchange', () => {
+    window.addEventListener('popstate', () => {
       this.router.navigateByUrl(location.hash.substr(1));
     });
 
