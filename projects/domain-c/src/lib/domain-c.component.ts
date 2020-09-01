@@ -46,12 +46,12 @@ export class DomainCComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
 
+    // Extraeinladung für den inneren Router
     this.router.navigateByUrl(location.hash.substr(1));
     window.addEventListener('hashchange', () => {
       this.router.navigateByUrl(location.hash.substr(1));
     });
 
-    //setTimeout(() => this.router.navigate(['.']), 0);
   }
 
   doStuff() {

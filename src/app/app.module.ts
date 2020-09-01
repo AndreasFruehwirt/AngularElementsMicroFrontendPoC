@@ -12,7 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(APP_ROUTES, { useHash: true, initialNavigation: false })
+    RouterModule.forRoot(APP_ROUTES, { useHash: true })
   ],
   declarations: [
     AppComponent,
