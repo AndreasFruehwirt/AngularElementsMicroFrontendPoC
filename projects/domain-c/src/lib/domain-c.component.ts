@@ -44,11 +44,18 @@ export class DomainCComponent implements OnInit, OnChanges {
     console.debug('Domainc::ngOnChanged', this.state, this.config)
   }
 
+
+  activateRoute() {
+    const idx = location.href.indexOf('domain-c/');
+    const route = location.href.substr(idx);
+    this.router.navigateByUrl(route);
+  }
+
   ngOnInit(): void {
 
-    this.router.navigateByUrl(location.hash.substr(1));
+    this.activateRoute();
     window.addEventListener('popstate', () => {
-      this.router.navigateByUrl(location.hash.substr(1));
+      this.activateRoute();
     });
 
     //setTimeout(() => this.router.navigate(['.']), 0);
