@@ -26,7 +26,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/domain-c.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +121,164 @@
           }
         }
       }
-    }},
+    },
+    "domain-c-elements": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/domain-c-elements",
+      "sourceRoot": "projects/domain-c-elements/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/domain-c-elements",
+            "index": "projects/domain-c-elements/src/index.html",
+            "main": "projects/domain-c-elements/src/main.ts",
+            "polyfills": "projects/domain-c-elements/src/polyfills.ts",
+            "tsConfig": "projects/domain-c-elements/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/domain-c-elements/src/favicon.ico",
+              "projects/domain-c-elements/src/assets"
+            ],
+            "styles": [
+              "projects/domain-c-elements/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/domain-c-elements/src/environments/environment.ts",
+                  "with": "projects/domain-c-elements/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "domain-c-elements:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "domain-c-elements:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "domain-c-elements:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/domain-c-elements/src/test.ts",
+            "polyfills": "projects/domain-c-elements/src/polyfills.ts",
+            "tsConfig": "projects/domain-c-elements/tsconfig.spec.json",
+            "karmaConfig": "projects/domain-c-elements/karma.conf.js",
+            "assets": [
+              "projects/domain-c-elements/src/favicon.ico",
+              "projects/domain-c-elements/src/assets"
+            ],
+            "styles": [
+              "projects/domain-c-elements/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/domain-c-elements/tsconfig.app.json",
+              "projects/domain-c-elements/tsconfig.spec.json",
+              "projects/domain-c-elements/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/domain-c-elements/e2e/protractor.conf.js",
+            "devServerTarget": "domain-c-elements:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "domain-c-elements:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "domain-c": {
+      "projectType": "library",
+      "root": "projects/domain-c",
+      "sourceRoot": "projects/domain-c/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/domain-c/tsconfig.lib.json",
+            "project": "projects/domain-c/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/domain-c/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/domain-c/src/test.ts",
+            "tsConfig": "projects/domain-c/tsconfig.spec.json",
+            "karmaConfig": "projects/domain-c/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/domain-c/tsconfig.lib.json",
+              "projects/domain-c/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "datev-xsc-demo"
 }
