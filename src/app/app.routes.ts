@@ -9,6 +9,6 @@ export function matcher(url: UrlSegment[]) {
 
 export const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
-    { component: ClientCWrapperComponent, matcher },
+    { matcher, component: ClientCWrapperComponent },
     { path: '**', component: NotFoundComponent},    
 ];

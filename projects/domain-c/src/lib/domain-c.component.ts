@@ -58,7 +58,6 @@ export class DomainCComponent implements OnInit, OnChanges {
       this.activateRoute();
     });
 
-    //setTimeout(() => this.router.navigate(['.']), 0);
   }
 
   doStuff() {
